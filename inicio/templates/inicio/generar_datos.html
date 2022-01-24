@@ -1,0 +1,38 @@
+{% extends "inicio/inicio.html" %}
+{% load static %} 
+{% block content %} 
+
+<div class="row margen2" >
+    <div class="col-12 text-center letra-blanca">
+        <h1>Generar Ventas</h1>
+        <p>Presione para generar 5000 registros aleatorios</p>
+    </div>
+</div>
+
+
+<div class="row justify-content-center">
+    <div class="col-4">
+        <form action="{% url 'generarDatos' %}">
+        <div class="d-grid gap-2">
+            
+            <button type="submit" onclick="mostrar()" class="btn btn-success btn-lg">Generar</button>
+        </div>
+        </form>
+    </div>
+</div>
+<br>    
+<div class="row" id="carga" style="display: none;">
+    <div class="col-12 text-center letra-blanca">
+        <h2>Generando ventas ...</h2>
+    </div>
+</div>
+
+<script type="text/javascript"  >
+    function mostrar(){
+
+        document.getElementById('carga').style.display = 'block';
+    }
+    </script>
+
+
+{%endblock%}

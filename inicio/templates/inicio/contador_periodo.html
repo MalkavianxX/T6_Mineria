@@ -1,0 +1,78 @@
+{% extends "inicio/inicio.html" %}
+{% load static %} 
+{% block content %} 
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center letra-blanca">
+            <h1>Ventas por periodo</h1>
+        </div>
+    </div>
+</div>
+<div class="container margen2">
+    <div class="row">
+        <div class="col-3 text-center letra-blanca">
+            <h3>Primavera</h3>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h3>Verano</h3>    
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h3>Otoño</h3>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h3>Invierno</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center letra-blanca">
+            <h5>21 Marzo - 22 Junio</h5>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h5>23 Junio - 22 Septiembre</h5>    
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h5>23 Septiembre - 22 Diciembre</h5>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h5>23 Diciembre - 22 marzo</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center letra-blanca">
+            <h1>{{prim}}</h1>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h1>{{ver}}</h1>  
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h1>{{oto}}</h1>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h1>{{inv}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center letra-blanca">
+            <h4>{{primp}}%</h4>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h4>{{verp}}%</h4>  
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h4>{{otop}}%</h4>
+        </div>
+        <div class="col-3 text-center letra-blanca">
+            <h4>{{invp}}%</h4>
+        </div>
+    </div>
+
+    <div class="row " style="margin-top: 5%;">
+        <div class="col-12 text-center letra-blanca">
+            <h3>Total de Ventas: {{ventas}}</h3>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,71 @@
+{% extends "inicio/inicio.html" %}
+{% load static %} 
+
+
+{% block content %} 
+{%if alert == 1%}
+<div class="row justify-content-end">
+    <div class="col-6 ">
+        <div class="alert {{name}} alert-dismissible fade show" role="alert">
+            {{mensaje}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+{%endif%}  
+<div class="container margen2"> 
+    <form action="{% url 'guardar' %}" method="get">
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="d-grid gap-2 text-center letra-blanca">
+                    <h2>Agregar</h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4 text-end " style="color: white">
+                <h3>ID: </h3>
+            </div>
+            <div class="col-4">
+                <input class="form-control" id="id" name="id" type="text" placeholder="123B" aria-label="default input example">
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-4 text-end " style="color: white">
+                <h3>Nombre: </h3>
+            </div>
+            <div class="col-4">
+                <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Producto x" aria-label="default input example">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-end " style="color: white">
+                <h3>Precio: </h3>
+            </div>
+            <div class="col-4">
+                <input class="form-control" id="precio" name="precio" type="text" placeholder="123.00   " aria-label="default input example">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-end " style="color: white">
+                <h3>Stock: </h3>
+            </div>
+            <div class="col-4">
+                <input class="form-control" id="stock" name="stock" type="text" placeholder="5" aria-label="default input example">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success btn-lg">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "inicio/inicio.html" %}
+{% load static %} 
+{% block content %} 
+<div class="row justify-content-end">
+    <div class="col-6 ">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h3>Hecho!</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<div class="row margen2" >
+    <div class="col-12 text-center letra-blanca">
+        <h1>Ventas Generadas</h1>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center letra-blanca">
+            <h2>Resultados</h2>
+        </div>
+    </div>
+    <br>
+    <div class="row letra-blanca justify-content-center">
+        <div class="col-3 text-center ">
+            <h4>Registros generados</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>Rango</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>Tiempo de ejecucion</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>% efectivo</h4>
+        </div>
+    </div>
+    <div class="row letra-blanca justify-content-center">
+        <div class="col-3 text-center">
+            <h4>{{num}}</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>5000</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>{{time}} seg.</h4>
+        </div>
+        <div class="col-3 text-center">
+            <h4>{{efect}}%</h4>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row justify-content-center margen2">
+    <div class="col-4">
+        <div class="d-grid gap-2">
+            <a type="button" href="http://127.0.0.1:8000/admin/inicio/venta/" class="btn btn-success btn-lg">Ver ventas</a>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
