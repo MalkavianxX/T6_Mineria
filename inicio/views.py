@@ -108,26 +108,62 @@ def generarDatos(request):
 
 #VENTAS -- CONTADOR DE PERIODOS
 def contar_periodos(request):
-
+    #obtener los registros que tiene la tabla ventas
     obj = Venta.objects.all()
+    #obtener el tamaño de la tabla (5000 por ejemplo)
     total = len(obj)    
+    #recorremos la tabla para modificar el formato de la fecha
+    #por ejemplo la fecha en la tabla es 01-02-2022:12:09:12:3456... 
+    #despues de este for la fecha saldria asi:
+    # 0201
     for i in range(total):
         obj[i].id = obj[i].id.strftime('%m%d') # 10-12-2022 --> 1210
+    #llamamos a las funciones para contar las ventas que hay en cada rango
+    #las cuales retornan un entero, que es el numero de ventas que hay para ese rango
     contador_prim = contador_periodo_primavera(obj)
     contador_ver = contador_periodo_verano(obj)
     contador_oto = contador_periodo_otono(obj)
+    #el contador invierno no tiene una funcion ya que las ventas que le corresponden
+    #serian las que sobran de las demas
     contador_inv = total - (contador_prim+contador_oto+contador_ver)
+    #esta parte llama a la template de html, la cual muestra los resultados
     return render(request,"inicio/contador_periodo.html",{
         'prim':contador_prim,
         'ver':contador_ver,
         'oto':contador_oto,
         'inv':contador_inv,
+        #ESTA PARTE DE PORCENTAJE SOLO ES PARA SABER QUE TANTO POR CIENTO ES DEL TOTAL DE LAS VENTAS
+        # POR EJEMPLO SI PRIM TIENE 600 VENTAS Y EL TOTAL DE VENTAS ES DE 5000
+        #LA FUNCION PORCENTAJE DEVUELVE EN FORMA DE STRING EL % AL QUE CORRESPONDE 600 DE 5000
+        
         'primp':porcentaje(total,contador_prim),
         'verp':porcentaje(total,contador_ver),
         'otop':porcentaje(total,contador_oto),
         'invp':porcentaje(total,contador_inv),
         'ventas':total    
         })
+#aqui estan las funciones que cuentan, la cual tiene fecha que inicia el periodo
+# y fecha con la que termina
+# devuelve un entero, 
+#la funcion calcPeriodo esta en el archivo "FUnciones Periodo.py sin embargo aqui lo muestro:"
+
+#
+#def contador_por_fechas(fecha_inicial,fecha_final, obj):
+#       AQUI HACEMOS LO MISMO QUE EN LA FUNCION PRINCIPAL, CAMBIAMOS LA FECHA A UN ENTERO
+        #LA CUAL ES MES Y DIA: 01/12/2022 A 1201
+#    fecha_final = fecha_final.strftime('%m%d')
+#    fecha_inicial = fecha_inicial.strftime('%m%d')    
+#    f1 = int(fecha_inicial) #1012 tipo: Time --> 1012 tipo: Int
+#    f2 = int(fecha_final)
+#    contador = 0
+#       RECORREMOS EL OBJETO QUE CONTIENE TODAS LAS VENTAS PARA ENCONTRAR LAS QUE
+#          COINCIDEN CON EL RANGO
+#    for i in range(len(obj)):   
+#        if (int(obj[i].id) >= int(f1) and int(obj[i].id) <= int(f2)):
+#            contador+=1 
+#       SE DEVUELVE EL RESULTADO
+#    return contador
+
 def contador_periodo_otono(obj):
     fecha_inicial = datetime.date(2021,9,23)
     fecha_final = datetime.date(2022,12,22)
